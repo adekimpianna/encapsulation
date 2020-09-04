@@ -3,16 +3,21 @@
 const obj = {
   _arr: [],
   get arr() {
+    return [...this._arr];
 
   },
   merge: function (toMerge) {
+    this._arr = [...toMerge, ...this._arr];
 
   },
   replaceAll: function (newEntry) {
+    for (let i = 0; i < this._arr.length; i++) {
+      this._arr[i] = newEntry;
+    }
 
   },
   getRemixed(mixer) {
-
+    return this._arr.join(mixer);
   },
 };
 
