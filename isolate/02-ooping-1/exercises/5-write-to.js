@@ -2,8 +2,14 @@
 
 const obj = {
   arr: [1, 0],
-  merge: function (toMerge) { },
-  replace: function (newArr) { },
+  merge: function (toMerge) {
+    this.arr = [...toMerge, ...this.arr];
+    return this.arr;
+   },
+  replace: function (newArr) {
+    this.arr = newArr;
+    return;
+   }
 };
 
 obj.merge([4]);
@@ -16,7 +22,7 @@ console.assert(test2, 'Test 2');
 
 obj.merge([null]);
 const test3 = deepCompare(obj.arr, [null, 'hi!', 'bye!'])
-console.assert(test3, 'Test 3');;
+console.assert(test3, 'Test 3');
 
 obj.merge(obj.arr);
 const test4 = deepCompare(obj.arr, [null, 'hi!', 'bye!', null, 'hi!', 'bye!'])
